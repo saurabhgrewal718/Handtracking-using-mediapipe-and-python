@@ -41,10 +41,12 @@ while True:
             else:
                 fingers.append(0)
 
-        print(fingers)
 
-    h,w,c = overlay_list[1].shape
-    img[0:h,0:w] = overlay_list[1]
+        totalfingers = fingers.count(1)
+        print(totalfingers)
+        cv2.putText(img,f'{int(totalfingers)}',(400,100),cv2.FONT_HERSHEY_PLAIN,3,(0,255,0),3)
+        h,w,c = overlay_list[totalfingers].shape
+        img[0:h,0:w] = overlay_list[totalfingers]
     cTime = time.time()
     fps = 1/(cTime-pTime)
     pTime = cTime
